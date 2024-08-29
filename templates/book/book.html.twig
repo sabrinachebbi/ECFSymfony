@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Books{% endblock %}
+<div>
+
+    <h4>{{ book.title }}</h4>
+    <p>{{ book.description}}</p>
+        <div >{{ book.DatePublication }}</div>
+    <div >
+        {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('app_book_update',{'id':book.id}) }}">Modifier</a>
+        <form action="{{ path('app_book_remove',{'id':book.id}) }}" method="post">
+            <input type="hidden" name="token" value="{{ csrf_token('delete-book' ~ book.id) }}">
+            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.')">supprimer</button>
+        </form>
+        {% endif %}
+
+    </div>
+</div>
+
+

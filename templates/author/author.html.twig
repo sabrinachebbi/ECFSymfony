@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Authors{% endblock %}
+<div>
+
+    <h4>{{ author.name}}</h4>
+    <div >{{ author.FirstName}}</div>
+    <p>{{ author.lastName}}</p>
+    <div>{{ author.DateNaiss }}</div>
+
+    <div >
+        <a href="{{ path('app_author_update',{'id':author.id}) }}">Modifier</a>
+        <form action="{{ path('app_author_remove',{'id':author.id}) }}" method="post">
+            <input type="hidden" name="token" value="{{ csrf_token('delete-author' ~ author.id) }}">
+            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.')">supprimer</button>
+        </form>
+
+    </div>
+</div>

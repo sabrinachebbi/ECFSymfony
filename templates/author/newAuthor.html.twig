@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}newAuthor{% endblock %}
+{% block body %}
+    <div class="">
+        <div class="">
+            <h2>Ajouter un nouvelle Auteur</h2>
+
+            {{ form_start(AuthorForm) }}
+            {{ form_row(AuthorForm.name) }}
+            {{ form_row(AuthorForm.FirstName) }}
+            {{ form_row(AuthorForm.LastName) }}
+            {{ form_row(AuthorForm.DateNaiss) }}
+
+
+
+            <button type="submit" class="btn">Ajouter</button>
+            {{ form_end(AuthorForm) }}
+        </div>
+    </div>
+{% endblock %}
